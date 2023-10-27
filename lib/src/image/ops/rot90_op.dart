@@ -19,7 +19,7 @@ class Rot90Op extends ImageOperator {
   @override
   TensorImage apply(TensorImage image) {
     // Image rotated = copyRotate(image.image, angle: 90 * _numRotation);
-    Image rotated = copyRotate(image.image, 90 * _numRotation);
+    Image rotated = copyRotate(image.image, _numRotation); // change this line .. * 90
     image.loadImage(rotated);
     return image;
   }
