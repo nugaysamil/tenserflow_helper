@@ -25,7 +25,7 @@ class ResizeWithCropOrPadOp implements ImageOperator {
   /// You can pass whith [_cropLeft] and [_cropTop] top-left position of a crop to overide the default centered one.
   ResizeWithCropOrPadOp(this._targetHeight, this._targetWidth,
       [this._cropLeft, this._cropTop])
-      : _output = Image(_targetWidth, _targetHeight);
+      : _output = Image(width: _targetWidth, height:_targetHeight);
   // : _output = Image( _targetWidth, _targetHeight);
 
   /// Applies the defined resizing with cropping or/and padding on [image] and returns the
@@ -49,7 +49,7 @@ class ResizeWithCropOrPadOp implements ImageOperator {
     int? cropWidthCustomPosition = _cropLeft;
     int? cropHeightCustomPosition = _cropTop;
 
-    _checkCropPositionArgument(w!, h!);
+    _checkCropPositionArgument(w, h);
 
     if (_targetWidth > w) {
       // padding
@@ -174,13 +174,13 @@ class ResizeWithCropOrPadOp implements ImageOperator {
     srcY ??= 0;
     srcW ??= src.width;
     srcH ??= src.height;
-    dstW ??= (dst.width! < src.width!) ? dstW = dst.width : src.width;
-    dstH ??= (dst.height! < src.height!) ? dst.height : src.height;
+    dstW ??= (dst.width < src.width) ? dstW = dst.width : src.width;
+    dstH ??= (dst.height < src.height) ? dst.height : src.height;
 
-    for (var y = 0; y < dstH!; ++y) {
-      for (var x = 0; x < dstW!; ++x) {
-        var stepX = (x * (srcW! / dstW)).toInt();
-        var stepY = (y * (srcH! / dstH)).toInt();
+    for (var y = 0; y < dstH; ++y) {
+      for (var x = 0; x < dstW; ++x) {
+        var stepX = (x * (srcW / dstW)).toInt();
+        var stepY = (y * (srcH / dstH)).toInt();
 
         final srcPixel = src.getPixel(srcX + stepX, srcY + stepY);
         if (blend) {

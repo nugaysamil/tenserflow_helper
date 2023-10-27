@@ -24,10 +24,36 @@ class ImageContainer extends BaseImageContainer {
 
   @override
   ColorSpaceType get colorSpaceType {
-    int? len = _image?.data.length;
+    int width = _image!.width;
+    int height = _image!.height;
     bool isGrayscale = true;
-    for (int i = (len! / 4).floor(); i < _image!.data.length; i++) {
-      if (_image!.data[i] != 0) {
+
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        Pixel pixel = _image!.getPixel(x, y);
+        if (pixel.r != 0 || pixel.g != 0 || pixel.b != 0) {
+          isGrayscale = false;
+          break;
+        }
+      }
+      if (!isGrayscale) {
+        break;
+      }
+    }
+
+    if (isGrayscale) {
+      return ColorSpaceType.grayscale;
+    } else {
+      return ColorSpaceType.rgb;
+    }
+  }
+
+/* 
+  ColorSpaceType get colorSpaceType {
+    int? len = _image!.data!.length;
+    bool isGrayscale = true;
+    for (int i = (len! / 4).floor(); i < len; i++) {
+      if (_image!.data![i] != 0) {
         isGrayscale = false;
         break;
       }
@@ -38,23 +64,7 @@ class ImageContainer extends BaseImageContainer {
       return ColorSpaceType.rgb;
     }
   }
-
-   /* ColorSpaceType get colorSpaceType {
-    int? len = _image!.data.length;
-    bool isGrayscale = true;
-    for (int i = (len / 4).floor(); i < _image!.data.length; i++) {
-      if (_image!.data[i] != 0) {
-        isGrayscale = false;
-        break;
-      }
-    }
-    if (isGrayscale) {
-      return ColorSpaceType.grayscale;
-    } else {
-      return ColorSpaceType.rgb;
-    }
-  } */
-
+ */
   @override
   TensorBuffer getTensorBuffer(TfLiteType dataType) {
     TensorBuffer buffer = TensorBuffer.createDynamic(dataType);
@@ -63,7 +73,7 @@ class ImageContainer extends BaseImageContainer {
   }
 
   @override
-  int get height => _image!.height!;
+  int get height => _image!.height;
 
   @override
   Image get image => _image!;
@@ -73,5 +83,5 @@ class ImageContainer extends BaseImageContainer {
       'Converting from Image to CameraImage is unsupported');
 
   @override
-  int get width => _image!.width!;
+  int get width => _image!.width;
 }
