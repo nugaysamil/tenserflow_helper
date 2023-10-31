@@ -1,4 +1,4 @@
-#import "TfliteFlutterHelperPlugin.h"
+#import "TfliteFlutterHelperPlusPlugin.h"
 #if __has_include(<tflite_flutter_helper/tflite_flutter_helper-Swift.h>)
 #import <tflite_flutter_helper_plus/tflite_flutter_helper_plus-Swift.h>
 #else
@@ -8,8 +8,8 @@
 #import "tflite_flutter_helper_plus-Swift.h"
 #endif
 
-@implementation TfliteFlutterHelperPlugin
+@implementation TfliteFlutterHelperPlusPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftTfliteFlutterHelperPlugin registerWithRegistrar:registrar];
+  [SwiftTfliteFlutterHelperPlusPlugin registerWithRegistrar:registrar];
 }
 @end

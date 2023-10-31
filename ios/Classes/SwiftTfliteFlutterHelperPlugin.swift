@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-public class SwiftTfliteFlutterHelperPlugin: NSObject, FlutterPlugin {
+public class SwiftTfliteFlutterHelperPlusPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "tflite_flutter_helper_plus", binaryMessenger: registrar.messenger())
     let instance = SwiftTfliteFlutterHelperPlugin()
