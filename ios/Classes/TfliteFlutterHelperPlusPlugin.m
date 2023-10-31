@@ -10,6 +10,7 @@
 
 @implementation TfliteFlutterHelperPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftTfliteFlutterHelperPlugin registerWithRegistrar:registrar];
+  [SwiftTfliteFlutterHelperPlusPlugin registerWithRegistrar:registrar];
 }
+
 @end
