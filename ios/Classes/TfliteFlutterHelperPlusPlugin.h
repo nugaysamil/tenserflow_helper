@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface TfliteFlutterHelperPlusPlugin : NSObject<FlutterPlugin>
+@interface TfliteFlutterHelperPlugin : NSObject<FlutterPlugin>
 @end
