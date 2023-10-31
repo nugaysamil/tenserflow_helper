@@ -1,5 +1,5 @@
 #import "TfliteFlutterHelperPlusPlugin.h"
-#if __has_include(<tflite_flutter_helper/tflite_flutter_helper-Swift.h>)
+#if __has_include(<tflite_flutter_helper_plus/tflite_flutter_helper_plus-Swift.h>)
 #import <tflite_flutter_helper_plus/tflite_flutter_helper_plus-Swift.h>
 #else
 // Support project import fallback if the generated compatibility header
