@@ -48,23 +48,6 @@ class ImageContainer extends BaseImageContainer {
     }
   }
 
-/* 
-  ColorSpaceType get colorSpaceType {
-    int? len = _image!.data!.length;
-    bool isGrayscale = true;
-    for (int i = (len! / 4).floor(); i < len; i++) {
-      if (_image!.data![i] != 0) {
-        isGrayscale = false;
-        break;
-      }
-    }
-    if (isGrayscale) {
-      return ColorSpaceType.grayscale;
-    } else {
-      return ColorSpaceType.rgb;
-    }
-  }
- */
   @override
   TensorBuffer getTensorBuffer(TfLiteType dataType) {
     TensorBuffer buffer = TensorBuffer.createDynamic(dataType);
